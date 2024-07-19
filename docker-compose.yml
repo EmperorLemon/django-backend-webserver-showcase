@@ -1,0 +1,18 @@
+services:
+  backend:
+    container_name: backend
+    build:
+      context: .
+      dockerfile: ./src/dev/build/Dockerfile
+    restart: unless-stopped
+    env_file:
+      - ./src/dev/config/.env
+    ports:
+      - "8000:8000"
+    networks:
+      - default
+    volumes:
+      - ./src:/app:rw
+      - static_volume:/app/staticfiles
+volumes:
+  static_volume:
