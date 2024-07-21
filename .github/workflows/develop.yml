@@ -26,8 +26,8 @@ jobs:
       - name: Remove existing source code from Server
         run:  |
           ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ubuntu@${{ secrets.SERVER_HOST }} "cd ~/backend && sudo docker-compose down" || true
-          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ubuntu@${{ secrets.SERVER_HOST }} "cd ~/backend && find . -mindepth 1 ! -name 'db.sqlite3' ! -path './src' ! -path './src/*' -delete 2>/dev/null"
-          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ubuntu@${{ secrets.SERVER_HOST }} "cd ~/backend && find ./src -mindepth 1 ! -name 'db.sqlite3' -delete 2>/dev/null"
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ubuntu@${{ secrets.SERVER_HOST }} "cd ~/backend && find . -mindepth 1 ! -name 'db.sqlite3' ! -path './src' ! -path './src/*' -delete"
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ubuntu@${{ secrets.SERVER_HOST }} "cd ~/backend && find ./src -mindepth 1 ! -name 'db.sqlite3' -delete"
           ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ubuntu@${{ secrets.SERVER_HOST }} "cd ~/backend && sudo docker system prune -f"
 
       - name: Check for db.sqlite3 after deletion
