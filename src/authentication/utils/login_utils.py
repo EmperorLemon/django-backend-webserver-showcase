@@ -9,8 +9,8 @@ def attempt_login(request, username : str, password : str) -> tuple[dict, int]:
         if user.is_active:
             refresh = RefreshToken.for_user(user)
             
-            return {"refresh" : str(refresh), 
-                    "access" : str(refresh.access_token)
+            return {"accessToken" : str(refresh.access_token),
+                    "refreshToken" : str(refresh)
                     }, 200
         
         return {"error" : "User account is disabled."}, 403
