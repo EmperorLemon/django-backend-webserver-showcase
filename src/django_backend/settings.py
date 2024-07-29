@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'corsheaders',
     'authentication.apps.AuthAppConfig',
+    'users.apps.UserAppConfig',
 ]
 
 MIDDLEWARE = [
@@ -131,6 +132,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = 'users.Accounts'
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/

@@ -17,10 +17,10 @@ class LoginView(APIView):
         serializer = self.serializer_class(data=request.data)
 
         if serializer.is_valid():
-            username = serializer.validated_data.get("username")
+            email = serializer.validated_data.get("email")
             password = serializer.validated_data.get("password")
 
-            response, status = attempt_login(request=request, username=username, password=password)
+            response, status = attempt_login(request=request, username=email, password=password)
 
             return Response(data=response, status=status)
         
